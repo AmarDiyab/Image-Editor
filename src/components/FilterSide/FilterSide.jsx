@@ -41,6 +41,11 @@ const FilterSide = () => {
         BnWOutput.value = 0
         BnW.value = 0
 
+        let text = document.getElementById('ImageOverlay')
+        let textOutput = document.getElementById('ImageText')
+        text.value = ""
+        textOutput.innerHTML = ""
+
         const img = document.getElementById('image');
         img.style.filter = "brightness(100%) saturate(100%) contrast(100%) sepia(0%) grayscale(0%)"
     }
@@ -51,7 +56,7 @@ const FilterSide = () => {
         let output = document.getElementById('brightnessValue')
         output.value = brightness.value
 
-        const img = document.getElementById('image');
+        const img = document.getElementById('image')
         img.style.filter = "brightness(" + brightness.value + "%)";
     }
 
@@ -112,7 +117,7 @@ const FilterSide = () => {
                             <input type="range" className='form-range' id='brightness'
                                 min={0}
                                 max={200}
-                                defaultValue={100}
+                                value={100}
                                 onChange={handleBrightness} />
                         </div>
                         <div className='col'>
@@ -130,7 +135,7 @@ const FilterSide = () => {
                             <input type="range" className='form-range' id='saturate'
                                 min={0}
                                 max={200}
-                                defaultValue={100}
+                                value={100}
                                 onChange={handleSaturate} />
                         </div>
                         <div className='col'>
@@ -148,7 +153,7 @@ const FilterSide = () => {
                             <input type="range" className='form-range' id='contrast'
                                 min={0}
                                 max={200}
-                                defaultValue={100}
+                                value={100}
                                 onChange={handleContrast} />
                         </div>
                         <div className='col'>
@@ -164,7 +169,7 @@ const FilterSide = () => {
                             <input type="range" className='form-range' id='sepia'
                                 min={0}
                                 max={100}
-                                defaultValue={0}
+                                value={0}
                                 onChange={handleSepia} />
                         </div>
                         <div className='col'>
@@ -182,7 +187,7 @@ const FilterSide = () => {
                             <input type="range" className='form-range' id='bnw'
                                 min={0}
                                 max={100}
-                                defaultValue={0}
+                                value={0}
                                 onChange={handleBnW} />
                         </div>
                         <div className='col'>
@@ -211,7 +216,7 @@ const FilterSide = () => {
 
             <div className="row mt-2">
                 <div className="col">
-                    <input type="text" defaultValue=' Image Overlay'  className='ImageOverlay' id='ImageOverlay'
+                    <input type="text" placeholder=' Image Overlay'  className='ImageOverlay' id='ImageOverlay'
                     onChange={handleOverlay} />
                 </div>
             </div>

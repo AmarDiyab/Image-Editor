@@ -30,7 +30,7 @@ const ImageSide = () => {
             <div className='ImagePreview'>
                 <img src={image} alt="blank" className='BlankImage' id='image' />
                 <Draggable>
-                    <h1 className='TextOverlay' id="typed_text">{custom_style.text_value}</h1>
+                    <h1 className='TextOverlay' id="ImageText">{custom_style.text_value}</h1>
                 </Draggable>
             </div>
         </div>
