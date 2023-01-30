@@ -6,7 +6,37 @@ import ClosedCaptionIcon from '@mui/icons-material/ClosedCaption';
 
 const FilterSide = () => {
 
+    const handleReset = () => {
+        let brightness = document.getElementById('brightness');
+        let brightnessOutput = document.getElementById('brightnessValue')
+        brightnessOutput.value = 100
+        brightness.value = 100
 
+        let saturate = document.getElementById('saturate');
+        let saturateOutput = document.getElementById('saturateValue')
+        saturateOutput.value = 100
+        saturate.value = 100
+
+        let contrast = document.getElementById('contrast');
+        let contrastOutput = document.getElementById('contrastValue')
+        contrastOutput.value = 100
+        contrast.value = 100
+
+        let sepia = document.getElementById('sepia');
+        let sepiaOutput = document.getElementById('sepiaValue')
+        sepiaOutput.value = 0
+        sepia.value = 0
+
+        let BnW = document.getElementById('bnw');
+        let BnWOutput = document.getElementById('bnwValue')
+        BnWOutput.value = 0
+        BnW.value = 0
+
+        const img = document.getElementById('image');
+        img.style.filter = "brightness(100%) saturate(100%) contrast(100%) sepia(0%) grayscale(0%)"
+    }
+    
+    //Filters
     const handleBrightness = () => {
         let brightness = document.getElementById('brightness');
         let output = document.getElementById('brightnessValue')
@@ -52,8 +82,6 @@ const FilterSide = () => {
         img.style.filter = "grayscale(" + BnW.value + "%)";
     }
 
-
-
     return (
         <div className='FilterSide p-4 '>
             <div className='row'>
@@ -62,7 +90,7 @@ const FilterSide = () => {
                     <span style={{ fontWeight: '800', marginLeft: '5px' }}> Filters </span>
                 </div>
                 <div className='col'>
-                    <span className='Reset'>Reset</span>
+                    <span className='Reset' style={{ cursor: 'pointer' }} onClick={handleReset}>Reset</span>
                 </div>
             </div>
 
@@ -79,7 +107,7 @@ const FilterSide = () => {
                                 onChange={handleBrightness} />
                         </div>
                         <div className='col'>
-                            <input type="text" value="100" id='brightnessValue' className='SliderValue' />
+                            <input type="text" value="100" id='brightnessValue' className='SliderValue' disabled="true" />
                         </div>
                     </div>
 
@@ -97,7 +125,7 @@ const FilterSide = () => {
                                 onChange={handleSaturate} />
                         </div>
                         <div className='col'>
-                            <input type="text" value="100" id='saturateValue' className='SliderValue' />
+                            <input type="text" value="100" id='saturateValue' className='SliderValue' disabled="true" />
                         </div>
                     </div>
                 </div>
@@ -115,7 +143,7 @@ const FilterSide = () => {
                                 onChange={handleContrast} />
                         </div>
                         <div className='col'>
-                            <input type="text" value="100" id='contrastValue' className='SliderValue' />
+                            <input type="text" value="100" id='contrastValue' className='SliderValue' disabled="true" />
                         </div>
                     </div>
                 </div>
@@ -131,7 +159,7 @@ const FilterSide = () => {
                                 onChange={handleSepia} />
                         </div>
                         <div className='col'>
-                            <input type="text" value="0" id='sepiaValue' className='SliderValue' />
+                            <input type="text" value="0" id='sepiaValue' className='SliderValue' disabled="true" />
                         </div>
                     </div>
                 </div>
@@ -149,7 +177,7 @@ const FilterSide = () => {
                                 onChange={handleBnW} />
                         </div>
                         <div className='col'>
-                            <input type="text" value="0" id='bnwValue' className='SliderValue' />
+                            <input type="text" value="0" id='bnwValue' className='SliderValue' disabled="true" />
                         </div>
                     </div>
                 </div>
