@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import { BrowserRouter as Link } from 'react-router-dom'
 import './ImageSide.css'
+import Draggable from 'react-draggable';
 
 const ImageSide = () => {
 
@@ -11,7 +12,7 @@ const ImageSide = () => {
         setImage(image + 1);
     }
 
-    const custom_style=useSelector((store)=>store);
+    const custom_style = useSelector((store) => store);
 
 
     return (
@@ -27,8 +28,10 @@ const ImageSide = () => {
                 </div>
             </div>
             <div className='ImagePreview'>
-                <img src={image} alt="blank" className='BlankImage' id='image'/>
-                <h1 className='TextOverlay' id="typed_text">{custom_style.text_value}</h1>
+                <img src={image} alt="blank" className='BlankImage' id='image' />
+                <Draggable>
+                    <h1 className='TextOverlay' id="typed_text">{custom_style.text_value}</h1>
+                </Draggable>
             </div>
         </div>
     )
