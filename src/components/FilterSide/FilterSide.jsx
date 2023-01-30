@@ -11,31 +11,47 @@ const FilterSide = () => {
         let brightness = document.getElementById('brightness');
         let output = document.getElementById('brightnessValue')
         output.value = brightness.value
+
+        const img = document.getElementById('image');
+        img.style.filter = "brightness(" + brightness.value + "%)";
     }
 
     const handleSaturate = () => {
         let saturate = document.getElementById('saturate');
         let output = document.getElementById('saturateValue')
         output.value = saturate.value
+
+        const img = document.getElementById('image');
+        img.style.filter = "saturate(" + saturate.value + "%)";
     }
 
     const handleContrast = () => {
         let contrast = document.getElementById('contrast');
         let output = document.getElementById('contrastValue')
         output.value = contrast.value
+
+        const img = document.getElementById('image');
+        img.style.filter = "contrast(" + contrast.value + "%)";
     }
 
     const handleSepia = () => {
         let sepia = document.getElementById('sepia');
         let output = document.getElementById('sepiaValue')
         output.value = sepia.value
+
+        const img = document.getElementById('image');
+        img.style.filter = "sepia(" + sepia.value + "%)";
     }
 
     const handleBnW = () => {
         let BnW = document.getElementById('bnw');
         let output = document.getElementById('bnwValue')
         output.value = BnW.value
+
+        const img = document.getElementById('image');
+        img.style.filter = "grayscale(" + BnW.value + "%)";
     }
+
 
 
     return (
