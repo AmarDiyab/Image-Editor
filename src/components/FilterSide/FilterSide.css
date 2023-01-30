@@ -1,6 +1,6 @@
 .FilterSide {
     background-color: gainsboro;
-    
+    height: 100vh;
 }
 
 .Reset {
@@ -14,7 +14,3 @@
     font-weight: 800;
 }
 
-.ImageOverlay {
-    width: 30%;
-    margin-left: 1rem;
-}

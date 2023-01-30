@@ -62,9 +62,11 @@ const FilterSide = () => {
                 </div>
             </div>
             <div className="row mt-2">
-                <input type="text" defaultValue='Image Overlay' className='ImageOverlay' />
+                <div className="col">
+                <input type="text" defaultValue=' Image Overlay' className='ImageOverlay'  />
+                </div>
             </div>
-
+                
 
         </div>
     )

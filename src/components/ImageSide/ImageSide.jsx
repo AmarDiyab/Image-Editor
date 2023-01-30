@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter as Link } from 'react-router-dom'
 import './ImageSide.css'
-import blankImage from '../../img/blank-image-icon.jpeg';
 
 const ImageSide = () => {
 
-    const setImage = () => {
-        let img = document.getElementById('image');
-        img.src = 'https://source.unsplash.com/random'
+    const [image, setImage] = useState('https://source.unsplash.com/random/&1');
+
+    const changeImage = () => {
+        setImage(image + 1);
     }
 
     return (
@@ -18,12 +18,12 @@ const ImageSide = () => {
                 </div>
                 <div className="col">
                     <Link to={'/'}>
-                        <button className='NewButton' onClick={()=> setImage()}>New </button>
+                        <button className='NewButton' onClick={changeImage}>New </button>
                     </Link>
                 </div>
             </div>
             <div className='ImagePreview'>
-                <img src={blankImage} image alt="blank" className='BlankImage' id='image'/>
+                <img src={image} image alt="blank" className='BlankImage' id='image'/>
             </div>
         </div>
     )
