@@ -2,10 +2,19 @@ import React from 'react'
 import './FilterSide.css'
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import ClosedCaptionIcon from '@mui/icons-material/ClosedCaption';
-
+import { useDispatch } from 'react-redux';
+import { text } from '../../redux/action';
 
 const FilterSide = () => {
 
+    const dispatch = useDispatch();
+
+    const handleOverlay=(e)=>{
+        dispatch(text(e.target.value));
+       }
+   
+
+    //  Reset
     const handleReset = () => {
         let brightness = document.getElementById('brightness');
         let brightnessOutput = document.getElementById('brightnessValue')
@@ -35,8 +44,8 @@ const FilterSide = () => {
         const img = document.getElementById('image');
         img.style.filter = "brightness(100%) saturate(100%) contrast(100%) sepia(0%) grayscale(0%)"
     }
-    
-    //Filters
+
+    //  Filters
     const handleBrightness = () => {
         let brightness = document.getElementById('brightness');
         let output = document.getElementById('brightnessValue')
@@ -199,9 +208,11 @@ const FilterSide = () => {
                     <span className='filterName'>Content</span>
                 </div>
             </div>
+
             <div className="row mt-2">
                 <div className="col">
-                    <input type="text" defaultValue=' Image Overlay' className='ImageOverlay' />
+                    <input type="text" defaultValue=' Image Overlay'  className='ImageOverlay' id='ImageOverlay'
+                    onChange={handleOverlay} />
                 </div>
             </div>
 

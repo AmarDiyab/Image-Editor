@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux';
 import { BrowserRouter as Link } from 'react-router-dom'
 import './ImageSide.css'
 
@@ -9,6 +10,9 @@ const ImageSide = () => {
     const changeImage = () => {
         setImage(image + 1);
     }
+
+    const custom_style=useSelector((store)=>store);
+
 
     return (
         <div className='ImageSide p-4'>
@@ -23,7 +27,8 @@ const ImageSide = () => {
                 </div>
             </div>
             <div className='ImagePreview'>
-                <img src={image} image alt="blank" className='BlankImage' id='image'/>
+                <img src={image} alt="blank" className='BlankImage' id='image'/>
+                <h1 className='TextOverlay' id="typed_text">{custom_style.text_value}</h1>
             </div>
         </div>
     )

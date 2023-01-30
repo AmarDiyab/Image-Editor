@@ -34,3 +34,11 @@
     text-align: center;
     width: 98%;
 }
+
+.TextOverlay {
+    position: absolute;
+    top: 100px;
+    left: 15rem;
+    font-size: larger;
+    font-weight: bold;
+}
