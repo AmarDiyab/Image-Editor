@@ -1,0 +1,20 @@
+.FilterSide {
+    background-color: gainsboro;
+    
+}
+
+.Reset {
+    color: #1046b0;
+    text-decoration: underline;
+    float: right;
+    margin-top: 1rem;
+}
+
+.filterName {
+    font-weight: 800;
+}
+
+.ImageOverlay {
+    width: 30%;
+    margin-left: 1rem;
+}

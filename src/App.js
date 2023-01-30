@@ -6,11 +6,11 @@ function App() {
   return (
     <div className='App row'>
 
-        <div className='col'>
+        <div className='col-sm-6'>
         <ImageSide />
       </div>
 
-      <div className="col" >
+      <div className='col-sm-6' >
         <FilterSide />
       </div>
 
