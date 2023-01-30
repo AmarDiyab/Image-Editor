@@ -2,10 +2,41 @@ import React from 'react'
 import './FilterSide.css'
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import ClosedCaptionIcon from '@mui/icons-material/ClosedCaption';
-import Slider from '../Slider/Slider';
 
 
 const FilterSide = () => {
+
+
+    const handleBrightness = () => {
+        let brightness = document.getElementById('brightness');
+        let output = document.getElementById('brightnessValue')
+        output.value = brightness.value
+    }
+
+    const handleSaturate = () => {
+        let saturate = document.getElementById('saturate');
+        let output = document.getElementById('saturateValue')
+        output.value = saturate.value
+    }
+
+    const handleContrast = () => {
+        let contrast = document.getElementById('contrast');
+        let output = document.getElementById('contrastValue')
+        output.value = contrast.value
+    }
+
+    const handleSepia = () => {
+        let sepia = document.getElementById('sepia');
+        let output = document.getElementById('sepiaValue')
+        output.value = sepia.value
+    }
+
+    const handleBnW = () => {
+        let BnW = document.getElementById('bnw');
+        let output = document.getElementById('bnwValue')
+        output.value = BnW.value
+    }
+
 
     return (
         <div className='FilterSide p-4 '>
@@ -22,28 +53,91 @@ const FilterSide = () => {
             <div className='row mt-5'>
                 <div className='col'>
                     <span className='filterName'>Brightness</span>
-                    <Slider />
+
+                    <div className='Slider row'>
+                        <div className='col'>
+                            <input type="range" className='form-range' id='brightness'
+                                min={0}
+                                max={200}
+                                defaultValue={100}
+                                onChange={handleBrightness} />
+                        </div>
+                        <div className='col'>
+                            <input type="text" value="100" id='brightnessValue' className='SliderValue' />
+                        </div>
+                    </div>
+
                 </div>
+
+
                 <div className="col">
                     <span className='filterName'>Saturate</span>
-                    <Slider />
+                    <div className='Slider row'>
+                        <div className='col'>
+                            <input type="range" className='form-range' id='saturate'
+                                min={0}
+                                max={200}
+                                defaultValue={100}
+                                onChange={handleSaturate} />
+                        </div>
+                        <div className='col'>
+                            <input type="text" value="100" id='saturateValue' className='SliderValue' />
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div className='row mt-5'>
                 <div className='col'>
                     <span className='filterName'>Contrast</span>
-                    <Slider />
+                    <div className='Slider row'>
+                        <div className='col'>
+                            <input type="range" className='form-range' id='contrast'
+                                min={0}
+                                max={200}
+                                defaultValue={100}
+                                onChange={handleContrast} />
+                        </div>
+                        <div className='col'>
+                            <input type="text" value="100" id='contrastValue' className='SliderValue' />
+                        </div>
+                    </div>
                 </div>
+
                 <div className="col">
                     <span className='filterName'>Sepia</span>
-                    <Slider />
+                    <div className='Slider row'>
+                        <div className='col'>
+                            <input type="range" className='form-range' id='sepia'
+                                min={0}
+                                max={100}
+                                defaultValue={0}
+                                onChange={handleSepia} />
+                        </div>
+                        <div className='col'>
+                            <input type="text" value="0" id='sepiaValue' className='SliderValue' />
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div className='row mt-5'>
                 <div className='col'>
-                    <span className='filterName'>Black White</span>
-                    <Slider />
+                    <span className='filterName'>Black/White</span>
+                    <div className='Slider row'>
+                        <div className='col'>
+                            <input type="range" className='form-range' id='bnw'
+                                min={0}
+                                max={100}
+                                defaultValue={0}
+                                onChange={handleBnW} />
+                        </div>
+                        <div className='col'>
+                            <input type="text" value="0" id='bnwValue' className='SliderValue' />
+                        </div>
+                    </div>
                 </div>
+
                 <div className="col">
 
                 </div>
@@ -63,10 +157,10 @@ const FilterSide = () => {
             </div>
             <div className="row mt-2">
                 <div className="col">
-                <input type="text" defaultValue=' Image Overlay' className='ImageOverlay'  />
+                    <input type="text" defaultValue=' Image Overlay' className='ImageOverlay' />
                 </div>
             </div>
-                
+
 
         </div>
     )
