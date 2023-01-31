@@ -34,12 +34,26 @@ const ImageSide = () => {
                 </Draggable>
             </div>
 
-            <div className='row'>
-                <div className='col mt-4'>
-                    <h5>Recent image</h5>
+            <div>
+                <div className='row'>
+                    <div className='col mt-4'>
+                        <h5>Recent image</h5>
+                    </div>
+                    <div className='col mt-1'>
+                        <button className='NewButton'>Save</button>
+                    </div>
                 </div>
-                <div className='col mt-1'>
-                    <button className='NewButton'>Save</button>
+                <div className="row">
+
+                    <div className="col">
+                        <div class="card" style={{width: '250px', height: '250px'}} >
+                            <img class="card-img-top" src={image} alt="CardImage" style={{ width: "250px", height: '250px' }} />
+                            <div class="card-body">
+                                <span class="card-text" style={{ fontWeight: 'bold' }}>Title</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
