@@ -117,7 +117,7 @@ const FilterSide = () => {
                             <input type="range" className='form-range' id='brightness'
                                 min={0}
                                 max={200}
-                                value={100}
+                                defaultValue={100}
                                 onChange={handleBrightness} />
                         </div>
                         <div className='col'>
@@ -135,7 +135,7 @@ const FilterSide = () => {
                             <input type="range" className='form-range' id='saturate'
                                 min={0}
                                 max={200}
-                                value={100}
+                                defaultValue={100}
                                 onChange={handleSaturate} />
                         </div>
                         <div className='col'>
@@ -153,7 +153,7 @@ const FilterSide = () => {
                             <input type="range" className='form-range' id='contrast'
                                 min={0}
                                 max={200}
-                                value={100}
+                                defaultValue={100}
                                 onChange={handleContrast} />
                         </div>
                         <div className='col'>
@@ -169,7 +169,7 @@ const FilterSide = () => {
                             <input type="range" className='form-range' id='sepia'
                                 min={0}
                                 max={100}
-                                value={0}
+                                defaultValue={0}
                                 onChange={handleSepia} />
                         </div>
                         <div className='col'>
@@ -187,7 +187,7 @@ const FilterSide = () => {
                             <input type="range" className='form-range' id='bnw'
                                 min={0}
                                 max={100}
-                                value={0}
+                                defaultValue={0}
                                 onChange={handleBnW} />
                         </div>
                         <div className='col'>
