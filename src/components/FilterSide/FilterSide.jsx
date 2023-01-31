@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './FilterSide.css'
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import ClosedCaptionIcon from '@mui/icons-material/ClosedCaption';
@@ -9,10 +9,10 @@ const FilterSide = () => {
 
     const dispatch = useDispatch();
 
-    const handleOverlay=(e)=>{
+    const handleOverlay = (e) => {
         dispatch(text(e.target.value));
-       }
-   
+    }
+
 
     //  Reset
     const handleReset = () => {
@@ -51,49 +51,44 @@ const FilterSide = () => {
     }
 
     //  Filters
-    const handleBrightness = () => {
-        let brightness = document.getElementById('brightness');
-        let output = document.getElementById('brightnessValue')
-        output.value = brightness.value
 
-        const img = document.getElementById('image')
-        img.style.filter = "brightness(" + brightness.value + "%)";
+    const [brightness, setBrightness] = useState(100);
+    const [saturate, setSaturate] = useState(100);
+    const [contrast, setContrast] = useState(100);
+    const [sepia, setSepia] = useState(0);
+    const [grayscale, setGrayscale] = useState(0);
+
+    const filters = `brightness(${brightness}%) saturate(${saturate}%) contrast(${contrast}%)
+                     sepia(${sepia}%) grayscale(${grayscale}%)`;
+
+    const handleBrightness = (e) => {
+        setBrightness(e.target.value)
+        const img = document.getElementById('image');
+        img.style.filter = filters;
     }
 
-    const handleSaturate = () => {
-        let saturate = document.getElementById('saturate');
-        let output = document.getElementById('saturateValue')
-        output.value = saturate.value
-
+    const handleSaturate = (e) => {
+        setSaturate(e.target.value)
         const img = document.getElementById('image');
-        img.style.filter = "saturate(" + saturate.value + "%)";
+        img.style.filter = filters;
     }
 
-    const handleContrast = () => {
-        let contrast = document.getElementById('contrast');
-        let output = document.getElementById('contrastValue')
-        output.value = contrast.value
-
+    const handleContrast = (e) => {
+        setContrast(e.target.value)
         const img = document.getElementById('image');
-        img.style.filter = "contrast(" + contrast.value + "%)";
+        img.style.filter = filters;
     }
 
-    const handleSepia = () => {
-        let sepia = document.getElementById('sepia');
-        let output = document.getElementById('sepiaValue')
-        output.value = sepia.value
-
+    const handleSepia = (e) => {
+        setSepia(e.target.value)
         const img = document.getElementById('image');
-        img.style.filter = "sepia(" + sepia.value + "%)";
+        img.style.filter = filters;
     }
 
-    const handleBnW = () => {
-        let BnW = document.getElementById('bnw');
-        let output = document.getElementById('bnwValue')
-        output.value = BnW.value
-
+    const handleBnW = (e) => {
+        setGrayscale(e.target.value)
         const img = document.getElementById('image');
-        img.style.filter = "grayscale(" + BnW.value + "%)";
+        img.style.filter = filters;
     }
 
     return (
@@ -117,11 +112,11 @@ const FilterSide = () => {
                             <input type="range" className='form-range' id='brightness'
                                 min={0}
                                 max={200}
-                                defaultValue={100}
+                                defaultValue={brightness}
                                 onChange={handleBrightness} />
                         </div>
                         <div className='col'>
-                            <input type="text" value="100" id='brightnessValue' className='SliderValue' disabled="true" />
+                            <input type="text" value={brightness} id='brightnessValue' className='SliderValue' disabled="true" />
                         </div>
                     </div>
 
@@ -135,11 +130,11 @@ const FilterSide = () => {
                             <input type="range" className='form-range' id='saturate'
                                 min={0}
                                 max={200}
-                                defaultValue={100}
+                                defaultValue={saturate}
                                 onChange={handleSaturate} />
                         </div>
                         <div className='col'>
-                            <input type="text" value="100" id='saturateValue' className='SliderValue' disabled="true" />
+                            <input type="text" value={saturate} id='saturateValue' className='SliderValue' disabled="true" />
                         </div>
                     </div>
                 </div>
@@ -153,11 +148,11 @@ const FilterSide = () => {
                             <input type="range" className='form-range' id='contrast'
                                 min={0}
                                 max={200}
-                                defaultValue={100}
+                                defaultValue={contrast}
                                 onChange={handleContrast} />
                         </div>
                         <div className='col'>
-                            <input type="text" value="100" id='contrastValue' className='SliderValue' disabled="true" />
+                            <input type="text" value={contrast} id='contrastValue' className='SliderValue' disabled="true" />
                         </div>
                     </div>
                 </div>
@@ -169,11 +164,11 @@ const FilterSide = () => {
                             <input type="range" className='form-range' id='sepia'
                                 min={0}
                                 max={100}
-                                defaultValue={0}
+                                defaultValue={sepia}
                                 onChange={handleSepia} />
                         </div>
                         <div className='col'>
-                            <input type="text" value="0" id='sepiaValue' className='SliderValue' disabled="true" />
+                            <input type="text" value={sepia} id='sepiaValue' className='SliderValue' disabled="true" />
                         </div>
                     </div>
                 </div>
@@ -187,11 +182,11 @@ const FilterSide = () => {
                             <input type="range" className='form-range' id='bnw'
                                 min={0}
                                 max={100}
-                                defaultValue={0}
+                                defaultValue={grayscale}
                                 onChange={handleBnW} />
                         </div>
                         <div className='col'>
-                            <input type="text" value="0" id='bnwValue' className='SliderValue' disabled="true" />
+                            <input type="text" value={grayscale} id='bnwValue' className='SliderValue' disabled="true" />
                         </div>
                     </div>
                 </div>
@@ -216,8 +211,8 @@ const FilterSide = () => {
 
             <div className="row mt-2">
                 <div className="col">
-                    <input type="text" placeholder=' Image Overlay'  className='ImageOverlay' id='ImageOverlay'
-                    onChange={handleOverlay} />
+                    <input type="text" placeholder=' Image Overlay' className='ImageOverlay' id='ImageOverlay'
+                        onChange={handleOverlay} />
                 </div>
             </div>
 
