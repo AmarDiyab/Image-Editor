@@ -6,20 +6,30 @@ import Draggable from 'react-draggable';
 
 const ImageSide = () => {
 
+    //  Add Image
     const [image, setImage] = useState('https://source.unsplash.com/random/&1');
 
     const changeImage = () => {
         setImage(image + 1);
     }
 
+    //  Image Overlay Text
     const custom_style = useSelector((store) => store);
 
+    //  Image Title
+    const [title, setTitle] = useState('Untitled image')
+
+    const handleTitle = (e) => {
+        setTitle(e.target.value)
+        // image.title = e.target.value;
+        console.log(image)
+    }
 
     return (
         <div className='ImageSide p-4'>
             <div className='row'>
                 <div className='col'>
-                    <input type="text" defaultValue="Untitled image" className='ImageName' />
+                    <input type="text" value={title} onChange={handleTitle} className='ImageName' />
                 </div>
                 <div className="col">
                     <Link to={'/'}>
