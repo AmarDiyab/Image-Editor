@@ -33,6 +33,16 @@ const ImageSide = () => {
                     <h1 className='TextOverlay' id="ImageText">{custom_style.text_value}</h1>
                 </Draggable>
             </div>
+
+            <div className='row'>
+                <div className='col mt-4'>
+                    <h5>Recent image</h5>
+                </div>
+                <div className='col mt-1'>
+                    <button className='NewButton'>Save</button>
+                </div>
+            </div>
+
         </div>
     )
 }
