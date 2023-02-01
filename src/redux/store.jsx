@@ -4,7 +4,8 @@ import {combineReducers, legacy_createStore} from "redux";
 
 const configureStore = () => {
     const rootReducer = combineReducers({
-      messages: imageReducer
+      messages: imageReducer,
+      text: textReducer
     });
   
     return legacy_createStore(rootReducer);

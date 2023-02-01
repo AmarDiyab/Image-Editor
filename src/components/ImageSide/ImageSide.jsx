@@ -15,7 +15,7 @@ const ImageSide = (props) => {
     }
 
     //  Image Overlay Text
-    const custom_style = useSelector((store) => store);
+    const custom_style = useSelector(state => state.text);
 
     //  Image Title
     const [title, setTitle] = useState('Untitled image')
@@ -85,7 +85,7 @@ const ImageSide = (props) => {
 
                     {messages.map((msg, i) => (
                         <div className="col"> 
-                            <div className="card" style={{ width: '250px', height: '250px' }} key={i}  >
+                            <div className="card" style={{ width: '250px', height: '250px', marginTop: '5rem' }} key={i}  >
                                 <img className="card-img-top" src={editImage} alt="CardImage" 
                                 style={{ width: "250px", height: '250px', filter: filter }} disabled={true} ref={cardRef} />
 
