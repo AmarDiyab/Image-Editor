@@ -28,11 +28,15 @@ const ImageSide = () => {
 
     const [editImage, setEditImage] = useState()
     const [filter, setFilter] = useState();
+    const [editTitle, setEditTitle] = useState();
+
     const saveImg = () => {
         let img = imgRef.current.src;
         setEditImage(img)
         let filt = imgRef.current.style.filter
         setFilter(filt)
+        let name = imgRef.current.title
+        setEditTitle(name)
     }
     
 
@@ -70,7 +74,7 @@ const ImageSide = () => {
                         <div className="card" style={{width: '250px', height: '250px'}} >
                             <img className="card-img-top" src={editImage} alt="CardImage" style={{ width: "250px", height: '250px', filter: filter }} />
                             <div className="card-body">
-                                <span className="card-text" style={{ fontWeight: 'bold' }}>Title</span>
+                                <span className="card-text" style={{ fontWeight: 'bold' }}>{editTitle}</span>
                             </div>
                         </div>
                     </div>
