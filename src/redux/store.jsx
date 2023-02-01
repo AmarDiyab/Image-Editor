@@ -1,5 +1,14 @@
-import { imageReducer } from "./reducer";
+import { imageReducer, textReducer } from "./reducer";
 
-import {legacy_createStore} from "redux";
+import {combineReducers, legacy_createStore} from "redux";
 
-export const store=legacy_createStore(imageReducer);
+const configureStore = () => {
+    const rootReducer = combineReducers({
+      messages: imageReducer
+    });
+  
+    return legacy_createStore(rootReducer);
+  }
+
+
+export const store = configureStore();

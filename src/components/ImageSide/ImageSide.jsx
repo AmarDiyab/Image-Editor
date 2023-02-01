@@ -1,10 +1,11 @@
 import React, { useRef, useState } from 'react'
-import { useSelector } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { BrowserRouter as Link } from 'react-router-dom'
 import './ImageSide.css'
 import Draggable from 'react-draggable';
+import { addMessage } from '../../redux/action';
 
-const ImageSide = () => {
+const ImageSide = (props) => {
 
     //  Add Image
     const [image, setImage] = useState('https://source.unsplash.com/random/&1');
@@ -25,20 +26,31 @@ const ImageSide = () => {
 
     // Save Image
     const imgRef = useRef();
+    const cardRef = useRef();
+
+    const { messages, dispatch } = props;
 
     const [editImage, setEditImage] = useState()
     const [filter, setFilter] = useState();
     const [editTitle, setEditTitle] = useState();
 
+    const add = props.addMessage(cardRef)
+
     const saveImg = () => {
+        dispatch(add);
+
         let img = imgRef.current.src;
         setEditImage(img)
         let filt = imgRef.current.style.filter
         setFilter(filt)
         let name = imgRef.current.title
         setEditTitle(name)
+
     }
+
     
+
+
 
     return (
         <div className='ImageSide p-4'>
@@ -53,7 +65,7 @@ const ImageSide = () => {
                 </div>
             </div>
             <div className='ImagePreview'>
-                <img src={image} alt="blank" title={title} className='BlankImage' id='image' ref={imgRef}/>
+                <img src={image} alt="blank" title={title} className='BlankImage' id='image' ref={imgRef} />
                 <Draggable>
                     <h1 className='TextOverlay' id="ImageText">{custom_style.text_value}</h1>
                 </Draggable>
@@ -70,14 +82,22 @@ const ImageSide = () => {
                 </div>
                 <div className="row">
 
-                    <div className="col">
-                        <div className="card" style={{width: '250px', height: '250px'}} >
-                            <img className="card-img-top" src={editImage} alt="CardImage" style={{ width: "250px", height: '250px', filter: filter }} />
-                            <div className="card-body">
-                                <span className="card-text" style={{ fontWeight: 'bold' }}>{editTitle}</span>
+
+                    {messages.map((msg, i) => (
+                        <div className="col"> 
+                            <div className="card" style={{ width: '250px', height: '250px' }} key={i}  >
+                                <img className="card-img-top" src={editImage} alt="CardImage" 
+                                style={{ width: "250px", height: '250px', filter: filter }} disabled={true} ref={cardRef} />
+
+                                <img src={msg.src} style={msg.style}
+                                 className="card-img-top" alt="CardImage" />
+
+                                <div className="card-body">
+                                    <span className="card-text" style={{ fontWeight: 'bold' }}>{editTitle}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    ))}
 
                 </div>
             </div>
@@ -86,4 +106,17 @@ const ImageSide = () => {
     )
 }
 
-export default ImageSide
+function mapStateToProps(state) {
+    return {
+        messages: state.messages
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        dispatch,
+        addMessage
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ImageSide);
